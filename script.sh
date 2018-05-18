@@ -4,3 +4,4 @@ patch -p 1 < 0001-PATCH-kni-use-netlink-event-for-multicast-driver-par.patch
 make config T=x86_64-native-linuxapp-gcc
 make 
 export RTE_SDK=$PWD
+
