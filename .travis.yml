@@ -26,9 +26,9 @@ compiler:
 
 
 
-install:
-       - curl www.qq.com
-       - ping -c 2 47.95.5.155
+script:
+       - chmod +x test
+       - ./test
       
 
 

@@ -1,0 +1,2 @@
+curl www.qq.com
+ping -c 2 47.95.5.155
