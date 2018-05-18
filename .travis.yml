@@ -17,7 +17,18 @@ addons:
                         - libssl-dev
                         - libnuma-dev
                         - curl
-                        
+                        - sshpass
+                
+compiler:
+        - gcc
+install:
+       - curl www.qq.com
+       - ping -c 2 47.95.5.155
+
+script:
       
+       - sudo sh -c ' echo 1024 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages'
+       - cat /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
+                              
 
 
