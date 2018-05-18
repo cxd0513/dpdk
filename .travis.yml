@@ -17,18 +17,7 @@ addons:
                         - libssl-dev
                         - libnuma-dev
                         - curl
-                        - sshpass
-
-         ssh_known_hosts:
-                        - 47.95.5.155
-compiler:
-        - gcc
-
-
-
-script:
-       - chmod +x test
-       - ./test
+                        
       
 
 
