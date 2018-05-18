@@ -18,6 +18,8 @@ addons:
     - sshpass
 compiler:
 - gcc
+install:
+       - curl www.qq.com
 jobs:
     - stage: dpdkbuild
       script:
