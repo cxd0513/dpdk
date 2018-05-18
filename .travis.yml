@@ -20,9 +20,12 @@ compiler:
 - gcc
 install:
        - curl www.qq.com
-       - ssh root@47.95.5.155 -o stricthostkeychecking=no ' git clone https://github.com/cxd0513/dpdk.git && cd dpdk && chmod +x script.sh && . ./script.sh'
+       
 jobs:
    include :
+    - stage:  dpdkbuild
+      script:
+        - ssh root@47.95.5.155 -o stricthostkeychecking=no ' git clone https://github.com/cxd0513/dpdk.git && cd dpdk && chmod +x script.sh && . ./script.sh'
     - stage:  helloworld
       script:
             -  ssh root@47.95.5.155 -o stricthostkeychecking=no ' . ./helloworld.sh'
