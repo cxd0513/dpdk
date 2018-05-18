@@ -21,7 +21,7 @@ compiler:
 install:
 - curl www.qq.com
 - ping -c 2 47.95.5.155
--  ssh root@47.95.5.155 -o stricthostkeychecking=no ' git clone https://github.com/cxd0513/dpdk.git && cd dpdk && chmod +x script.sh && ../script.sh'
+-  ssh root@47.95.5.155 -o stricthostkeychecking=no ' git clone https://github.com/cxd0513/dpdk.git && cd dpdk && chmod +x script.sh && . ./script.sh'
 script:
 - sudo sh -c ' echo 1024 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages'
 - cat /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
