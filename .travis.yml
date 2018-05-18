@@ -26,7 +26,8 @@ script:
 - sudo sh -c ' echo 1024 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages'
 - cat /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
 before_install:
+
 - openssl aes-256-cbc -K $encrypted_91258f690662_key -iv $encrypted_91258f690662_iv
-  -in id_rsa.enc -out /root\/.ssh/id_rsa -d
-- chmod 600 /root/.ssh/id_rsa
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 47.95.5.155\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
