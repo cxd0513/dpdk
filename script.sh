@@ -3,5 +3,5 @@ sed -i "s/pci_intx_mask_supported(dev)/pci_intx_mask_supported(dev)||true/g" lib
 patch -p 1 < 0001-PATCH-kni-use-netlink-event-for-multicast-driver-par.patch
 make config T=x86_64-native-linuxapp-gcc
 make 
-export RTE_SDK=$PWD
+export RTE_SDK=/root/dpdk/dpdk-stable-17.05.2
 
