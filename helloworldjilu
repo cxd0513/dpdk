@@ -1,0 +1,2 @@
+ssh root@47.95.5.155 -o stricthostkeychecking=no 'cd dpdk/dpdk-stable-17.05.2/examples/helloworld/ && make RTE_TARGET=build && ./build/helloworld'
+
