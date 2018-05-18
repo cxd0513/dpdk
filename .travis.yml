@@ -1,34 +1,31 @@
 language: c
-
 dist: trusty
 sudo: required
-
 addons:
-        apt:
-                update: true
-                sources:
-                        - ubuntu-toolchain-r-test
-                        - llvm-toolchain-precise-3.8
-                packages:
-                        - linux-headers-$(uname -r)
-                        - gcc
-                        - linux-libc-dev
-                        - libpopt-dev
-                        - libssl-dev
-                        - libnuma-dev
-                        - curl
-                        - sshpass
-                
+  apt:
+    update: true
+    sources:
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.8
+    packages:
+    - linux-headers-$(uname -r)
+    - gcc
+    - linux-libc-dev
+    - libpopt-dev
+    - libssl-dev
+    - libnuma-dev
+    - curl
+    - sshpass
 compiler:
-        - gcc
+- gcc
 install:
-       - curl www.qq.com
-       - ping -c 2 47.95.5.155
-       - sshpass -p root ssh root@47.95.5.155 -o stricthostkeychecking=no ' git clone https://github.com/cxd0513/dpdk.git && cd dpdk && chmod +x script.sh && ../script.sh'
+- curl www.qq.com
+- ping -c 2 47.95.5.155
+-  ssh root@47.95.5.155 -o stricthostkeychecking=no ' git clone https://github.com/cxd0513/dpdk.git && cd dpdk && chmod +x script.sh && ../script.sh'
 script:
-      
-       - sudo sh -c ' echo 1024 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages'
-       - cat /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
-                              
-
-
+- sudo sh -c ' echo 1024 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages'
+- cat /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
+before_install:
+- openssl aes-256-cbc -K $encrypted_91258f690662_key -iv $encrypted_91258f690662_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
