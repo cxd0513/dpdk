@@ -19,23 +19,23 @@ addons:
 compiler:
 - gcc
 install:
-       - curl www.qq.com
-       
+- curl www.qq.com
 jobs:
-   include :
-    - stage:  dpdkbuild
-      script:
-        - ssh root@47.95.5.155 -o stricthostkeychecking=no ' rm -rf dpdk/ && git clone https://github.com/cxd0513/dpdk.git && cd dpdk && chmod +x script.sh && . ./script.sh'
-    - stage:  helloworld
-      script:
-            -  ssh root@47.95.5.155 -o stricthostkeychecking=no 'cd dpdk && chmod +x helloworld.sh && . ./helloworld.sh'
-    - stage: test
-      script:
-      - sudo sh -c ' echo 1024 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages'
-      - cat /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
+  include:
+  - stage: dpdkbuild
+    script:
+    - ssh root@10.15.204.15 -o stricthostkeychecking=no ' env '
+  - stage: helloworld
+    script:
+    - ssh root@10.15.204.15 -o stricthostkeychecking=no ' pwd'
+  - stage: test
+    script:
+    - sudo sh -c ' echo 1024 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages'
+    - cat /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
 before_install:
-
+- openssl aes-256-cbc -K $encrypted_91258f690662_key -iv $encrypted_91258f690662_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - openssl aes-256-cbc -K $encrypted_91258f690662_key -iv $encrypted_91258f690662_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
-- echo -e "Host 47.95.5.155\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host 10.15.204.15\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
