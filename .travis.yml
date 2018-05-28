@@ -24,7 +24,7 @@ jobs:
   include:
   - stage: dpdkbuild
     script:
-    - ssh root@115.182.224.11 -o stricthostkeychecking=no ' pwd '
+    - ssh root@115.182.224.11 -o stricthostkeychecking=no ' env '
   - stage: helloworld
     script:
     - ssh root@115.182.224.11 -o stricthostkeychecking=no ' pwd'
